@@ -7,9 +7,24 @@ var clear = function(){
     ctx.clearRect( 0, 0, w, h);
 }
 
-var draw = function( event ){
+var draw = function( ){
     var c = document.getElementById( "paddledCanvas" );
     ctx = c.getContext( "2d" );
-    ctx.fillStyle( "#8159af" );
-    ctx.fillRect(event.clientX - 10, event.clientY -10, 20, 20);
+    ctx.fillStyle = "#8159af" ;
+    var x = event.x - c.offsetLeft;
+    var y = event.y - c.offsetTop;
+    ctx.fillRect(x - 10 , y - 10, 20, 20);
 }
+
+var b = document.getElementById( "clr-btn" );
+b.addEventListener( "click", function() {
+    clear();
+});
+
+var c = document.getElementById( "paddledCanvas" );
+c.addEventListener( "click", function() {
+    console.log("drawing");
+    draw();
+});
+
+
